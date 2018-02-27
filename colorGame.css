@@ -1,6 +1,7 @@
 body{
 	background-color: #232323;
 }
+
 .square{
 	width: 30%;
 	background:purple;
@@ -14,6 +15,12 @@ body{
 	max-width: 600px;
 }
 
-span{
+h1{
 	color: white;
+}
+
+#stripe{
+	background-color: white;
+	height: 30px;
+	text-align: center;
 }
