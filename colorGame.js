@@ -1,31 +1,53 @@
-var colors= generateRandomColors(6);
+var colors= [];
+var numbSquares = 6;
+var pickedColor;
 var squares = document.querySelectorAll(".square");
-var pickedColor = pickColor();
 var colorDisplay= document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var modeBtn = document.querySelectorAll(".mode");
-var numbSquares = 6;
 
-for (var i = 0; i < modeBtn.length; i++){
+
+init();
+
+function init(){
+	//mode buttons event listeners
+	setupModeBtn();
+	setupSquares();
+	reset();
+}
+
+function setupModeBtn(){
+	for (var i = 0; i < modeBtn.length; i++){
 	modeBtn[i].addEventListener("click", function(){
-		modeBtn[0].classList.remove("selected");
-		modeBtn[1].classList.remove("selected");
-		this.classList.add("selected");
-		this.textContent ==="Easy" ? numbSquares=3: numbSquares=6;
-		// if (this.textContent==="Easy"){
-		// 	numbSquares=3;
-		// } else{
-		// 	numbSquares=6;
-		// }
-		reset();
-		//figure out how many squares to show
-		//pick new colors
-		//pick a new pickedcolor
-		//update page to reflect changes
-
+	modeBtn[0].classList.remove("selected");
+	modeBtn[1].classList.remove("selected");
+	this.classList.add("selected");
+	this.textContent ==="Easy" ? numbSquares=3: numbSquares=6;
+	reset();
 	});
+	}	
+}
+
+function setupSquares(){
+	for (var i = 0; i < squares.length; i++) {
+	//add click listeners to squares
+	squares[i].addEventListener("click", function(){
+		//grab color of clicked square
+		var clickedColor = this.style.background;
+		//compare color to pickedColor
+		if(clickedColor === pickedColor){
+			messageDisplay.textContent = "Correct!";
+			resetButton.textContent = "Play Again?";
+			changeColors(clickedColor);
+			h1.style.background = clickedColor;
+		} else{
+			this.style.background = "#232323";
+			messageDisplay.textContent = "Try Again";
+		}
+	});
+	}
 }
 // easyBtn.addEventListener("click", function(){
 // 	hardBtn.classList.remove("selected");
@@ -77,29 +99,6 @@ function reset(){
 resetButton.addEventListener("click", function(){
 	reset();
 });
-
-colorDisplay.textContent = pickedColor;
-
-
-for (var i = 0; i < squares.length; i++) {
-	//add initial color to squares
-	squares[i].style.background = colors[i];
-	//add click listeners to squares
-	squares[i].addEventListener("click", function(){
-		//grab color of clicked square
-		var clickedColor = this.style.background;
-		//compare color to pickedColor
-		if(clickedColor === pickedColor){
-			messageDisplay.textContent = "Correct!";
-			resetButton.textContent = "Play Again?";
-			changeColors(clickedColor);
-			h1.style.background = clickedColor;
-		} else{
-			this.style.background = "#232323";
-			messageDisplay.textContent = "Try Again";
-		}
-	});
-}
 
 function changeColors(color){
 	//loop through all squares
