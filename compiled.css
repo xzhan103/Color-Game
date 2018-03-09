@@ -15,15 +15,15 @@
     height: 100%;
     width: 100%;
     transition: .3s all ease-in-out;
-    background: rgba(0, 0, 0, 0.425); }
+    background: rgba(12, 38, 79, 0.425); }
   .container:hover:before {
-    background: rgba(0, 0, 0, 0.675); }
+    background: rgba(12, 38, 79, 0.675); }
 
 .diamond {
   position: absolute;
   height: 380px;
   width: 380px;
-  border-radius: 25px;
+  border-radius: 200px;
   transition: .3s all ease-in-out;
   background: #fff;
   border: 3px solid #fff;
@@ -65,11 +65,16 @@ a {
 
 span {
   padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.425);
+  background: rgba(12, 38, 79, 0.425);
   border-radius: 25px; }
 
 ul {
   text-align: left;
-  width: 70%; }
+  width: 70%; 
+  padding-left: 5px;
+  margin: 10px 5px 20px 50px;
+  border-left: 3px solid goldenrod;
+}
+
 
 /*# sourceMappingURL=compiled.css.map */
